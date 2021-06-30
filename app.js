@@ -20,7 +20,9 @@ app.get('/',(req,res) =>{
     title: 'Jurassic World: Fallen Kingdom',
     image: 'https://movie-list.alphacamp.io/posters/c9XxwwhPHdaImA2f1WEfEsbhaFB.jpg',
   }
-  res.render('index', { movie: movieOne })
+  const numberList = [1, 2, 3, 4, 5, 6, 7, 8]
+  res.render('index', { movie: movieOne, numbers: numberList })
+  
 })
 
 
