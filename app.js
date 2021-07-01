@@ -22,6 +22,16 @@ app.get('/',(req,res) =>{
   
 })
 
+app.get('/search',(req,res) => {
+  console.log('req.query.keyword',req.query.keyword)
+  const movies = movieList.results.filter((movie) =>{
+    return movie.title.toLowerCase().includes(req.query.keyword.toLowerCase())
+  })
+  res.render('index', {movies: movies,keyword:req.query.keyword})
+})
+
+
+
 app.get('/movies/:movie_id',(req,res) => {
 
   console.log('req.params.movie_id:',req.params.movie_id)
@@ -33,7 +43,6 @@ app.get('/movies/:movie_id',(req,res) => {
   const movie = movieList.results.filter(movie => movie.id === Number(req.params.movie_id))
 
   console.log('movie',movie)
-
   // const movieOne = {
   //   title: 'Jurassic World: Fallen Kingdom',
   //   image:  'c9XxwwhPHdaImA2f1WEfEsbhaFB.jpg',
